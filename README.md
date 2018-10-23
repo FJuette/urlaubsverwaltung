@@ -1,22 +1,22 @@
-# Urlaubsverwaltung Container
+## Urlaubsverwaltung Container
 
 Docker Container für **synyx Urlaubsverwaltung** (https://github.com/synyx/urlaubsverwaltung) mit Active Directory Konfiguration. 
 
 Das verwendete JAR-Paket stammt direkt von Github (link siehe *Dockerfile*) und wurde für die Verwendung im Container nicht verändert.
 
-# Run
+## Run
 
 Der fertige Container steht unter https://hub.docker.com/r/fjuette/urlaubsverwaltung/ bereit.
 Es wird empfohlen die Anwendung z. B. über *docker-compose* in Kombination mit einer MariaDB und allen dafür nötigen Umgebungsvariablen zu starten.
 
 Die beiliegende *docker-compose.yaml* bietet dafür eine gute Basis und kann ohne weitere Anpassugen verwendet werden.
 
-## Konfiguration
+### Konfiguration
 
 Aktuell wird die hinterlegte *application.properties* in den Container eingebunden, welche Platzhalter für bestimmte Konfigurationsabschnitte bietet. 
 Eine vollständige Liste aller Konfigurationsparameter für die Urlaubsverwaltung bietet der Abschnitt [Umgebungsvariablen](#Umgebungsvariablen).
 
-## Überschreiben der Konfiguration
+### Überschreiben der Konfiguration
 
 Für die eigene Konfiguration können die Werte der hinterlegten *docker-compose.yaml* mittels einer docker-compose.override.yaml in teilen überschrieben werden, z. B.:
 
@@ -37,7 +37,7 @@ volumes:
   db-data:
 ```
 
-### Umgebungsvariablen (ENVs)
+#### Umgebungsvariablen
 
 Liste aller verfügbaren ENVs, welche entsprechende Platzhalter in der *application.properties* haben:
 
@@ -55,9 +55,9 @@ SNYC_USER_DN: # Nutzer, welcher zum Synchronisieren verwendet werden kann, z. B.
 SYNC_PASSWORD: # Passwort für den Sync Nutzer
 ```
 
-# Entwicklung
+## Entwicklung
 
-## Build vom Container
+### Build vom Container
 
 1. Anpassen der *Dockerfile* (z. B. Version, welche über wget geladen wird aktualiseren) und/oder der *application.properties*
 2. Optionaler lokaler build und ggf. push des Containers
@@ -67,7 +67,7 @@ docker build -t fjuette/urlaubsverwaltung .
 docker push fjuette/urlaubsverwaltung
 ```
 
-## Weitere ENV
+### Weitere ENV
 
 Bisher sind die ENV nur für die Verwendung mittel AD vorbereitet, weitere können jedoch einfach in der *application.properties* ergänzt werden. 
 Weitere ENVs bitte über eine Issue oder ein Pull request anfragen/hinzufügen.
